@@ -1,5 +1,5 @@
 # KLING-HR-Bot
-Simple Dsicord bot to automate check-in of members
+Simple Discord bot to automate check-in of members
 ## Usage
 After cloning this repo:
 1. In a terminal at the root directory of the cloned repo, run `npm install`, to install dependencies (`discord.js`), if not already installed
