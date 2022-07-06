@@ -4,7 +4,12 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "start": "node .",
     "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/freddycopa/KLING-HR-Bot.git"
   },
   "author": "Freddycopa",
   "license": "ISC",
