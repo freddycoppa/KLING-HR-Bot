@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const { token } = require('./config.json');
 const { scheduleDaily, check_in_emoji, days } = require('./utils.js');
 
 const client = new Discord.Client({
@@ -38,4 +37,4 @@ client.once("ready", async function() {
 	});
 });
 
-client.login(token);
+client.login(process.argv[2]);
