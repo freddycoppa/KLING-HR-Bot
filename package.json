@@ -1,0 +1,14 @@
+{
+  "name": "kling-hr-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "author": "Freddycopa",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.8.1"
+  }
+}
