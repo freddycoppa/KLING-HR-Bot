@@ -2,9 +2,10 @@ const Discord = require('discord.js');
 const { token } = require('./config.json');
 const { scheduleDaily, check_in_emoji, days } = require('./utils.js');
 
-const client = new Discord.Client({ intents: 
-	Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS |
-	Discord.Intents.FLAGS.GUILD_MEMBERS
+const client = new Discord.Client({
+	intents:
+		Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS |
+		Discord.Intents.FLAGS.GUILD_MEMBERS,
 });
 
 client.once("ready", async function() {
