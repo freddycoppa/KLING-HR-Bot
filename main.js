@@ -8,11 +8,12 @@ const client = new Discord.Client({
 });
 
 client.once("ready", async function() {
+	console.log('Ready');
 	const server = await client.guilds.fetch('988513060316643388'); // KLING Office
 	const check_in_channel = await server.channels.fetch('989394366839803924'); // #check-in
 	const attendance_channel = await server.channels.fetch('992460779368489030'); // #absentees
 	
-	scheduleDaily('00:00', async function() { // at 12:00 am
+	scheduleDaily(process.argv[3], async function() { // at 12:00 am
 		const check_in_msg = await check_in_channel.send("@everyone check in by reacting below:");
 		check_in_msg.react(check_in_emoji);
 		
@@ -33,7 +34,7 @@ client.once("ready", async function() {
 		absentees.each(absentee => attendance_msg += absentee.displayName + '\n');
 		
 		attendance_channel.send(attendance_msg);
-		check_in_msg.delete();
+		//check_in_msg.delete();
 	});
 });
 
