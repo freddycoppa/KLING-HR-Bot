@@ -13,11 +13,13 @@ client.once("ready", async function() {
 	const check_in_channel = await server.channels.fetch('989394366839803924'); // #check-in
 	const attendance_channel = await server.channels.fetch('992460779368489030'); // #absentees
 	
-	scheduleDaily(process.argv[3], async function() { // at 12:00 am
+	scheduleDaily(process.argv[3], async function() {
 		const check_in_msg = await check_in_channel.send("@everyone check in by reacting below:");
 		check_in_msg.react(check_in_emoji);
 		
 		const members = (await server.members.fetch()).filter(member => !member.user.bot);
+		
+		const yesterday = new Date();
 		
 		const presentees = (await (await check_in_msg.awaitReactions({
 			filter: (reaction, user) => reaction.emoji.name == check_in_emoji && !user.bot,
@@ -27,8 +29,7 @@ client.once("ready", async function() {
 		
 		const absentees = members.difference(presentees);
 		
-		const today = new Date();
-		let attendance_msg = `__**${days[today.getDay()]} ${today.getDate()}/${today.getMonth()}/${today.getFullYear()}**__\n\n**Present (${presentees.size}):**\n`;
+		let attendance_msg = `__**${days[yesterday.getDay()]} ${yesterday.getDate()}/${yesterday.getMonth()}/${yesterday.getFullYear()}**__\n\n**Present (${presentees.size}):**\n`;
 		presentees.each(presentee => attendance_msg += presentee.displayName + '\n');
 		attendance_msg += `\n**Absent (${absentees.size}):**\n`;
 		absentees.each(absentee => attendance_msg += absentee.displayName + '\n');
